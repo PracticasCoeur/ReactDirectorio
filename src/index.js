@@ -15,3 +15,10 @@ root.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+
+{/* <App miDato="100" nombre="Cosa"/>
+<App miDato="10"/>
+<App miDato="200" nombre="Otra Cosa"/>
+<App miDato="40"/>
+<App miDato="100"/> */}

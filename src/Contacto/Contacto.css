@@ -1,0 +1,23 @@
+.contenedorlista{
+    background-color: rgb(245, 244, 237);
+    width: 400px;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    padding-bottom: 1px;
+}
+.contenedorlista h2{
+    background-color: blue;
+    color: white;
+    border-radius: 5px;
+}
+.contenedorlista button{
+    background-color: red;
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+    border: 0;
+    border-radius: 3px;
+    margin-bottom: 1rem;
+}

@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+.titulo{
+  text-align: center;
+  background-color: blue;
+  color: white;
+}
+.cantidad{
+  text-align: center;
+}
+.cantidad span{
+  color: red;
+}

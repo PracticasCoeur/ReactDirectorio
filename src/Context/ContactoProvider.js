@@ -1,0 +1,91 @@
+import React from "react";  
+
+
+
+const ContactoContext=React.createContext();
+function ContactoProvider(props) {
+    let contactos;
+
+    if(!localStorage.contactos)
+    {
+        localStorage.setItem("contactos",JSON.stringify([]))
+        contactos=[];
+    }
+    else{
+        contactos=JSON.parse(localStorage.contactos);
+    }
+
+    let [contactosList,setContactosList]=React.useState(contactos);
+    let [valorBusqueda,setValorBusqueda]=React.useState("");
+
+    let cantidadAmigos=contactosList.length;
+    let contactosFiltro;
+
+    function borrarAmigo(telefono){
+
+        const indice=contactos.findIndex(contacto=>contacto.telefono==telefono);
+        let contactosTemporal=[...contactos];
+        contactosTemporal.splice(indice,1);
+        localStorage.setItem("contactos",JSON.stringify(contactosTemporal));
+        setContactosList(contactosTemporal);
+
+    }
+
+    if(valorBusqueda.length>0){
+        let textoBusqueda=valorBusqueda.toLowerCase();
+        contactosFiltro=contactos.filter((contacto)=>{
+            let nombre=contacto.nombre.toLocaleLowerCase();
+            if(nombre.includes(textoBusqueda))
+                return contacto;
+        });
+    }
+    else{
+        contactosFiltro=contactosList;
+    }
+    return(
+        <ContactoContext.Provider value={{
+            cantidadAmigos,
+            valorBusqueda,
+            setValorBusqueda,
+            contactosFiltro,
+            borrarAmigo
+
+        }}>
+            {props.children}
+
+        </ContactoContext.Provider>
+    )
+}
+
+
+
+
+// const nombre="Plataaa";
+// let edad=21;
+// const correo="cesar_josue30@hotmail.com";
+// const ContactoContext=React.createContext();
+// const actualizaEdad=(nuevaEdad)=>{
+//     edad=nuevaEdad;
+// }
+// function ContactoProvider(props) {
+
+//     let [dummy,setDummy]=React.useState("Cabello");
+
+//     return(
+//         <ContactoContext.Provider value={{
+//             nombre,
+//             edad,
+//             correo,
+//             dummy,
+//             setDummy,
+//             actualizaEdad
+//         }
+//         }>
+//             {props.children}
+
+//         </ContactoContext.Provider>
+//     );
+
+// }
+
+export {ContactoContext,ContactoProvider};

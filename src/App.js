@@ -4,6 +4,7 @@ import React from 'react';
 import Busqueda from './Busqueda';
 import Lista from './Lista';
 import Contacto from './Contacto';
+import ModalAmigo from './ModalAmigo';
 
 import AgregarAmigo from './AgregarAmigo';
 import {ContactoProvider,ContactoContext} from './Context/ContactoProvider';
@@ -45,7 +46,8 @@ function App() {
         {
           ({cantidadAmigos,
           contactosFiltro,
-          borrarAmigo})=>(
+          borrarAmigo,
+          modal})=>(
             <React.Fragment>
               <h1 className='titulo'>Mi Lista de Contactos</h1>
               <h3 className='cantidad'>Tengo <span> {cantidadAmigos} </span> amigos</h3>
@@ -64,7 +66,8 @@ function App() {
                 }
 
               </Lista>
-              {contactosFiltro.lenght==0 && <h1>No tienes Amigos</h1>}
+              {contactosFiltro.lenght === 0 && <h1>No tienes Amigos</h1>}
+              {modal && <ModalAmigo />}
             </React.Fragment>
           )}
       </ContactoContext.Consumer>
